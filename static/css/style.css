@@ -1,0 +1,180 @@
+/* General Styles */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    background-color: #fff;
+    color: #111;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+/* Header */
+header {
+    padding: 2rem;
+    border-bottom: 1px solid #eee;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 2rem;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 6rem 2rem;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: #666;
+}
+
+.cta-button {
+    background-color: #000;
+    color: #fff;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    font-weight: 600;
+    display: inline-block;
+    margin-top: 1rem;
+}
+
+/* Featured Posts */
+.featured-posts {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.post-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.post-card {
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.post-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.post-card h3 {
+    padding: 1.5rem;
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.post-card p {
+    padding: 0 1.5rem 1.5rem;
+    margin: 0;
+    color: #666;
+}
+
+.post-card a {
+    display: block;
+    padding: 1.5rem;
+    text-align: right;
+    font-weight: 600;
+}
+
+/* Post Content */
+.post-content {
+    max-width: 800px;
+    margin: 4rem auto;
+    padding: 2rem;
+}
+
+.post-content h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+}
+
+.post-content img {
+    width: 100%;
+    margin-bottom: 2rem;
+    border-radius: 5px;
+}
+
+.post-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #333;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: #999;
+}
+
+/* Create Post Page */
+.create-post-container {
+    max-width: 800px;
+    margin: 4rem auto;
+    padding: 2rem;
+}
+
+.create-post-container h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+}
+
+.create-post-container form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.create-post-container form input[type="text"],
+.create-post-container form textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+}
+
+.create-post-container form input[type="file"] {
+    margin-bottom: 1.5rem;
+}
