@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WritePress</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="logo"><a href="{% url 'home' %}">WritePress</a></div>
+        <ul>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'create' %}">Create Post</a></li>
+          <li><a href="#">About</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section class="featured-posts">
+        <div class="post-grid">
+          {% for post in post%}
+          <div class="post-card">
+            <img src="{{post.image.url}}" alt="Post " />
+            <h3>{{post.title}}</h3>
+            <p class="post-description">
+              {{ post.description|truncatechars:120 }}
+            </p>
+            <a href="{% url 'details' post.id %}">Read More</a>
+          </div>
+          {% endfor %}
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
