@@ -1,0 +1,1 @@
+web: gunicorn writepress.wsgi --log-file -
