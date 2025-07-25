@@ -15,6 +15,7 @@ import os
 from decouple import config
 import dj_database_url
 import django_heroku
+from decouple import config
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -82,12 +83,16 @@ WSGI_APPLICATION = 'writepress.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(
+        default=config('DATABASE_URL', default='postgres://user:password@localhost:5432/dbname'),
+        conn_max_age=600,
+        ssl_require=False  # or True depending on your host
+    )
 }
+
 
 
 # Password validation
