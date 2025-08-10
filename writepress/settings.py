@@ -83,15 +83,22 @@ WSGI_APPLICATION = 'writepress.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-
-
-DATABASES = {
-    'default': dj_database_url.config(
-        default=config('DATABASE_URL', default='postgres://user:password@localhost:5432/dbname'),
-        conn_max_age=600,
-        ssl_require=False  # or True depending on your host
-    )
-}
+# Use SQLite for development, PostgreSQL for production
+if config('DATABASE_URL', default=None):
+    DATABASES = {
+        'default': dj_database_url.config(
+            default=config('DATABASE_URL'),
+            conn_max_age=600,
+            ssl_require=False
+        )
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 
 
