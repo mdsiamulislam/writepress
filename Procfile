@@ -1,1 +1,1 @@
-web: gunicorn writepress.wsgi --log-file -
+web: gunicorn writepress.wsgi:application --bind 0.0.0.0:$PORT
