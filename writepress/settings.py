@@ -29,7 +29,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY', default='django-insecure-72%76f80$u_0mjvaclye^c!(383u*%o5v=uxqfk@y@@v)n8sd3')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = config('DEBUG', default=True, cast=bool)
 
 ALLOWED_HOSTS = ['*']
 
@@ -89,15 +89,19 @@ WSGI_APPLICATION = 'writepress.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 # Use SQLite for development, PostgreSQL for production
-if config('DATABASE_URL', default=None):
+DATABASE_URL = config('DATABASE_URL', default=None)
+
+if DATABASE_URL:
+    # Production database (PostgreSQL on Render)
     DATABASES = {
         'default': dj_database_url.config(
-            default=config('DATABASE_URL'),
+            default=DATABASE_URL,
             conn_max_age=600,
-            ssl_require=False
+            ssl_require=True  # Render requires SSL
         )
     }
 else:
+    # Development database (SQLite)
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
