@@ -2,14 +2,15 @@ databases:
   - name: writepress-db
     databaseName: writepress
     user: writepress
+    plan: free
 
 services:
   - type: web
     name: writepress
-    runtime: python3
-    buildCommand: "./build.sh"
-    startCommand: "gunicorn writepress.wsgi:application"
+    env: python
     plan: free
+    buildCommand: "chmod +x build.sh && ./build.sh"
+    startCommand: "gunicorn writepress.wsgi:application --bind 0.0.0.0:$PORT"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
@@ -18,4 +19,6 @@ services:
       - key: SECRET_KEY
         generateValue: true
       - key: WEB_CONCURRENCY
-        value: 4
+        value: 2
+      - key: PYTHON_VERSION
+        value: 3.9.0
