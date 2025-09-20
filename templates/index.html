@@ -23,7 +23,11 @@
         <div class="post-grid">
           {% for post in post%}
           <div class="post-card">
-            <img src="{{post.image.url}}" alt="Post " />
+            {% if post.image %}
+              <img src="{{post.image.url}}" alt="Post " />
+            {% else %}
+                <img src="https://placehold.co/600x400" alt="Post " />
+            {% endif %}
             <h3>{{post.title}}</h3>
             <p class="post-description">
               {{ post.description|truncatechars:120 }}
