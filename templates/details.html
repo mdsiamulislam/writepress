@@ -22,7 +22,11 @@
       <article class="post-content">
         <h1>{{ post.title }}</h1>
         <p class="post-author">By {{ post.author }}</p>
-        <img src="{{ post.image.url }}" alt="Post" />
+          {% if post.image %}
+            <img src="{{post.image.url}}" alt="Post " />
+          {% else %}
+            <img src="https://placehold.co/600x400" alt="Post " />
+          {% endif %}
         <p>{{ post.description }}</p>
       </article>
     </main>
